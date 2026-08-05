@@ -22,7 +22,7 @@ const SideBar = () => {
         <h2 className='text-xl font-bold text-gray-900 tracking-tight mb-8'>Dashboard</h2>
         
         <nav className='space-y-2'>
-          {menuItems.map((item) => {
+          {menuItems?.map((item) => {
             const Icon = item.icon
             const active = isActive(item.path)
             

@@ -37,12 +37,14 @@ app.use('/api/payment', paymentRoute);
 app.use('/api/analytic', analyticRoute);
 app.use('/api/order', orderRoute);
 
-app.use(express.static(path.join(__dirname, "../frontend/dist")));
+app.use(express.static(path.resolve(__dirname, "../frontend/dist")));
 
-app.get("/{*any}", (req, res) => {
-  res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
+app.use((req, res, next) => {
+  if (req.method === "GET" && !req.path.startsWith("/api")) {
+    return res.sendFile(path.resolve(__dirname, "../frontend/dist/index.html"));
+  }
+  next();
 });
-
 app.listen(ENV.PORT, () => {
   connectDb();
   console.log(`server started ${ENV.PORT}`);

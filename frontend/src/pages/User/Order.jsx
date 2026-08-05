@@ -34,7 +34,7 @@ const Orders = () => {
           </div>
         ) : (
           <div className='space-y-6'>
-            {orders.map((order) => {
+            {orders?.map((order) => {
               return (
                 <div key={order._id} className='bg-white rounded-lg border border-emerald-100 shadow-sm overflow-hidden'>
 
@@ -62,7 +62,7 @@ const Orders = () => {
                   </div>
 
                   <div className='divide-y divide-emerald-100'>
-                    {order.products.map((item, index) => {
+                    {order?.products?.map((item, index) => {
                       const name = item.name || item.product?.name
                       const image = item.image || item.product?.image
 

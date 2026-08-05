@@ -59,26 +59,6 @@ export const useDeleteProductApi = ()=>{
     })
 }
 
-
-// export const useToggleProduct = ()=>{
-//     const queryClient = useQueryClient()
-//     return useMutation({
-//         mutationFn:toggleProductApi,
-
-//         onSuccess:(data)=>{
-
-//              queryClient.invalidateQueries('getAllProduct')
-//              toast.success("Product Toggled successfully")
-        
-
-//             console.log(data)
-//         },
-//         onError:(err)=>{
-//             console.log(err)
-//         }
-//     })
-// }
-
 export const useToggleProduct = () => {
   const queryClient = useQueryClient()
   return useMutation({
@@ -93,7 +73,7 @@ export const useToggleProduct = () => {
         if (!old?.products) return old
         return {
           ...old,
-          products: old.products.map((item) =>
+          products: old?.products?.map((item) =>
             item._id === id ? { ...item, isFeatured: !item.isFeatured } : item
           )
         }

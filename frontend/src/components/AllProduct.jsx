@@ -23,7 +23,7 @@ const AllProduct = ({page, setpage, activeSearch, category, priceRange},) => {
   return (
     <div className='min-h-screen w-full lg:w-[80%] flex flex-col justify-between bg-white'>
       <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 p-8'>
-        {data?.products.map((item, index) => {
+        {data?.products?.map((item, index) => {
           return(
             <div 
               key={item?._id ?? index}
